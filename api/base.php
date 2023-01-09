@@ -166,4 +166,6 @@ if(empty($today)){
 }
 $_SESSION['total']=1;
 }
+$User=new DB('user')
 ?>
+

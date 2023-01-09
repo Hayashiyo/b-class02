@@ -34,23 +34,23 @@
             pw: $("#pw").val()
         }
         $.post("./api/chk_acc.php", user, (result) => {
-                if (parseInt(result) === 1) {
-                    $.post("./api/chk_pw.php", user, (result) => {
-                            if (parseInt(result) === 1) {
-                                if(user.acc==='admin'){
-                                    location.href='back.php'
-                                }else{
-                                    location.href='index.php'
-                                }
-                            }else{
-                                alert("wrong pw")
+            if (parseInt(result) === 1) {
+                $.post("./api/chk_pw.php", user, (result) => {
+                    console.log(result);
+                    if (parseInt(result) === 1) {
+                        if (user.acc === 'admin') {
+                            // location.href = 'back.php';
+                        } else {
+                            location.href = 'index.php';
+                        }
+                    } else {
+                        alert("wrong pw");
 
-                            }
-                        })
                     }
-                    else {
-                        alert("no acc");
-                    }
-                })
-        }
+                });
+            } else {
+                alert("no acc");
+            }
+        })
+    }
 </script>
